@@ -1,7 +1,7 @@
 class Api::V1::ForecastController < ApplicationController
   def index
     location = Location.new(forecast_params[:location])
-    
+    binding.pry
     # lat = Location.lat(forecast_params[:location])
     # long = Location.long(forecast_params[:location])
     forecast = Forecast.search(location.lat, location.long)
