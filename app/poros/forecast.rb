@@ -27,6 +27,7 @@ class Forecast
   def self.current(current_json)
     weather = current_json[:weather][0]
     description = weather[:description]
+    
     binding.pry
   end
 end
