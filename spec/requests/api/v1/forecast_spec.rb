@@ -5,7 +5,7 @@ describe 'User', type: :request do
     VCR.use_cassette('forecast denver', :record => :new_episodes) do
       get api_v1_forecast_path(params: { location: 'denver, co' })
       expect(response).to be_successful
-      # expect(response).to have_http_status(200)
+      expect(response).to have_http_status(200)
 
       json = JSON.parse(response.body, symbolize_names: true)
 
