@@ -66,4 +66,7 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
+  config.filter_sensitive_data('<MAPQUEST_API>') { ENV['MAPQUEST_API'] }
+  config.filter_sensitive_data('<OPEN_WEATHER_API>') { ENV['OPEN_WEATHER_API'] }
+  config.allow_http_connections_when_no_cassette = true
 end
