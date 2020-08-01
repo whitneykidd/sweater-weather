@@ -5,7 +5,7 @@ describe Forecast do
     it 'search(juneau, ak)' do
       VCR.use_cassette('forecast juneau') do
         forecast = Forecast.search('58.301084', '-134.424524')
-binding.pry
+
         # expect(forecast).to be_a(Forecast)
 
         expect(forecast.current[:description]).to eq("123")
