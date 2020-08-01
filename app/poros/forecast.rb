@@ -1,4 +1,4 @@
-# class Forecast
+class Forecast
 #   attr_reader :id, :current, :hourly, :daily
 
 #   def initialize(forecast_info)
@@ -10,15 +10,16 @@
 #     binding.pry
 #   end
 
-#   def self.search(lat, long)
-#    forecast_json = OpenWeatherService.new.fetch_forecast_by_city(lat, long)
-#   #  location = Location.search(location)
-#    current = current(forecast_json[:current]) 
-#   #  hourly = hourly(forecast_json[:current]) 
-#   #  daily = daily(forecast_json[:current] )
-#   #  forecast_info = prep_forecast_info(forecast_json)
-#    new(current)
-#   end
+  def self.search(location)
+   forecast_json = OpenWeatherService.new.fetch_forecast_by_city(location.lat, location.long)
+  #  location = Location.search(location)
+  binding.pry
+   current = current(forecast_json[:current]) 
+  #  hourly = hourly(forecast_json[:current]) 
+  #  daily = daily(forecast_json[:current] )
+  #  forecast_info = prep_forecast_info(forecast_json)
+   new(current)
+  end
 
 #   # def self.prep_forecast_info(current, hourly, daily)
 #   #   current = 
@@ -38,4 +39,4 @@
 #     visibility = current_json[:visibility]
 #     # binding.pry
 #   end
-# end
+end

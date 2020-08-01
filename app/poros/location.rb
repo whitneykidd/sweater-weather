@@ -31,7 +31,6 @@ class Location
   def self.find_long_lat(location)
     location_json = MapquestService.new.fetch_lat_long(location)
     location_info = prep_location_info(location_json)   
-    binding.pry 
     new(location_info)
   end
 
@@ -43,7 +42,4 @@ class Location
     country = location_json[:results][0][:locations][0][:adminArea1]
     { lat: lat, long: long, city: city, state:state, country:country }
   end
-  # def self.fetch_location
-  #   MapquestService.new.fetch_lat_long(location)
-  # end
 end
