@@ -31,17 +31,15 @@ class Forecast
     current_json[:time] = current_json[:dt]
     current_json[:uv_index] = current_json[:uvi]
     current_json[:visibility] = current_json[:visibility]
-# binding.pry
+    
     filter(current_json, :current)
-    # binding.pry
   end
 
   def self.hourly(hourly_json)
     hourly_json.map do |hour_json|
-      # binding.pry
       hour_json[:temperature] = hour_json[:temp]
       hour_json[:time] = hour_json[:dt]
-      # binding.pry
+
       filter(hour_json, :hourly)
     end
   end
@@ -52,7 +50,7 @@ class Forecast
       day_json[:max_temp] = day_json[:temp][:max]
       day_json[:min_temp] = day_json[:temp][:min]
       day_json[:rain] = day_json[:pop] ||= 0
-      # binding.pry
+
       filter(day_json, :daily)
     end
     

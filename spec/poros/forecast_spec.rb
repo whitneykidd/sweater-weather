@@ -19,13 +19,15 @@ describe Forecast do
         expect(forecast.current[:time]).to eq(1596321698)
         expect(forecast.current[:uv_index]).to eq(5.07)
         expect(forecast.current[:visibility]).to eq(10000)
+        expect(forecast.current.length).to eq(9)
+        
+        forecast.hourly.each do |hour|
+          expect(hour[:temperature]).to be_between(54.95, 68)
+          expect(hour[:time]).to be_between(1596319200, 1596488400)
+                                           
+        end
+        expect(forecast.hourly.length).to eq(48)
 
-        expect(forecast.length).to eq(11)
-
-
-        expect(forecast.hourly[0][:description]).to eq("light rain")
-        expect(forecast.hourly[0][:temperature]).to eq(68.0)
-        expect(forecast.hourly[0][:time]).to eq("1596319200")
 
       end
     end
