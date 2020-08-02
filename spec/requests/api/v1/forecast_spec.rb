@@ -8,7 +8,7 @@ describe 'User', type: :request do
       # expect(response).to have_http_status(200)
 
       json = JSON.parse(response.body, symbolize_names: true)
-      expect(json[:results][:type]).to eq('forecast')
+      expect(json[:type]).to eq('forecast')
       expect(json[:results]).to have_key(:attributes)
 
       expect(json[:data][:attributes][:location][:city]).to eq('Denver')

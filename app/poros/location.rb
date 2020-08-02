@@ -1,23 +1,3 @@
-# class Location
-#   attr_reader :location
-#   def initialize(location)
-#     @location = location
-#   end
-
-#   def self.lat
-#     # location_json = MapquestService.new.fetch_lat_long(location)
-#     lat = fetch_location[:results][0][:locations][0][:latLng][:lat]
-#   end
-
-#   def self.long
-#     # location_json = MapquestService.new.fetch_lat_long(location)
-#     lat = fetch_location[:results][0][:locations][0][:latLng][:lng]
-#   end
-
-
-# end
-
-
 class Location
   attr_reader :lat, :long, :city, :state, :country
   def initialize(location_info)
