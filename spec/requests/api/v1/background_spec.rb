@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Client' do
   it 'can retrieve an image url for a location' do
-    VCR.use_cassette('background denver') do
+    VCR.use_cassette('background denver', :record => :new_episodes) do
       
       get api_v1_background_path(params: { location: 'denver,co' })
 
