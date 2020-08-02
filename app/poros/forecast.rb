@@ -7,18 +7,17 @@ class Forecast
     @current = forecast_info[:current]
     @hourly = forecast_info[:hourly]
     @daily = forecast_info[:daily]
+    @location = forecast_info[:location]
   end
 
   def self.search(location)
-   forecast_json = OpenWeatherService.new.fetch_forecast_by_city(location)
-  #  location = Location.search(location)
-   current = current(forecast_json[:current]) 
-  #  binding.pry
-   hourly = hourly(forecast_json[:hourly]) 
-   daily = daily(forecast_json[:daily])
-   forecast_info = prep_forecast_info(location, current, hourly, daily)
-  #  binding.pry
-   new(forecast_info)
+    location = location
+    forecast_json = OpenWeatherService.new.fetch_forecast_by_city(location)
+    current = current(forecast_json[:current]) 
+    hourly = hourly(forecast_json[:hourly]) 
+    daily = daily(forecast_json[:daily])
+    forecast_info = prep_forecast_info(location, current, hourly, daily)
+    new(forecast_info)
   end
 
   def self.current(current_json)
@@ -67,7 +66,6 @@ class Forecast
   end
 
   def self.filter(json, type)
-    # binding.pry
     case type
       when :current then json.slice(
       :time, :temperature, :description, :sunrise, :sunset,
@@ -78,7 +76,5 @@ class Forecast
         :description, :max_temp, :min_temp, :rain
     )
     end
-
-
   end
 end

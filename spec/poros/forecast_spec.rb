@@ -9,6 +9,9 @@ describe Forecast do
         forecast = Forecast.search(location)
 
         expect(forecast).to be_a(Forecast)
+        expect(forecast.location[:city]).to eq("juneau")
+        expect(forecast.location[:state]).to eq("ak")
+        expect(forecast.location[:country]).to eq("us")
 
         expect(forecast.current[:description]).to eq("broken clouds")
         expect(forecast.current[:feels_like]).to eq(60.04)
@@ -23,12 +26,15 @@ describe Forecast do
         
         forecast.hourly.each do |hour|
           expect(hour[:temperature]).to be_between(54.95, 68)
-          expect(hour[:time]).to be_between(1596319200, 1596488400)
-                                           
+          expect(hour[:time]).to be_between(1596319200, 1596488400)                                  
         end
         expect(forecast.hourly.length).to eq(48)
 
-
+        forecast.daily.each do |day|
+          expect(day[:max_temp]).to be_between(52.54, 68)
+          expect(day[:min_temp]).to be_between(49.82, 57.02)
+          expect(day[:rain]).to be_between(0.72, 1)
+        end
       end
     end
   end
