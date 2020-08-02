@@ -3,8 +3,6 @@ class Api::V1::ForecastController < ApplicationController
     location = Location.find_long_lat(forecast_params[:location])
     forecast = Forecast.search(location)
     forecast_render(forecast)
-    # render json: ForecastSerializer.new(forecast)
-    # binding.pry
   end
 
   private

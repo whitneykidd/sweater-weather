@@ -2,7 +2,6 @@ class Forecast
   attr_reader :current, :daily, :hourly, :id, :location
 
   def initialize(forecast_info)
-    # binding.pry
     @id = nil
     @current = forecast_info[:current]
     @hourly = forecast_info[:hourly]
