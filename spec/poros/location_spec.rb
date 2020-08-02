@@ -4,17 +4,15 @@ describe Location do
   describe 'class methods' do
     it 'lat(denver, co)' do
       VCR.use_cassette('location denver') do
-        lat = Location.lat
-
-        expect(lat).to eq(39.738453)
+        location = Location.find_long_lat('denver, co')
+        expect(location.lat).to eq(39.738453)
       end
     end
 
     it 'lon(denver, co)' do
       VCR.use_cassette('location denver') do
-        long = Location.long
-
-        expect(long).to eq(-104.984853)
+        location = Location.find_long_lat('denver, co')
+        expect(location.long).to eq(-104.984853)
       end
     end
   end
