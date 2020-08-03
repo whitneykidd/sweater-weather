@@ -14,13 +14,13 @@ describe 'Client' do
 
     post api_v1_users_path(params: user_params)
 
-    expect(response).to have_http_response(201)
+    expect(response).to have_http_status(201)
     expect(User.count).to eq(1)
 
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(json[:data][:id]).to eq(User.last.id.to_s)
-    expect(json[:data][:type]).to eq('users')
+    expect(json[:data][:type]).to eq('user')
     expect(json[:data][:attributes][:api_key].chars.length).to eq(48)
   end
 end
