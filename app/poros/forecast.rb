@@ -10,7 +10,7 @@ class Forecast
   end
 
   def self.search(location)
-    location = location
+    # location = location
     forecast_json = OpenWeatherService.new.fetch_forecast_by_city(location)
     current = current(forecast_json[:current]) 
     hourly = hourly(forecast_json[:hourly]) 
