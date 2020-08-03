@@ -3,7 +3,7 @@ class OpenWeatherService < BaseService
     path = '/data/2.5/onecall'
     params = { appid: ENV['OPEN_WEATHER_API'], lat: location.lat,
               lon: location.long, units: 'imperial', exclude: 'minutely' }
-    # binding.pry
+
     fetch_json(path, params)
   end
   

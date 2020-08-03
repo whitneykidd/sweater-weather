@@ -13,7 +13,6 @@ class MapquestService < BaseService
               to: trail[:location]}
 
     fetch_json(path, params)
-    # binding.pry
   end
 
 

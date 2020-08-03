@@ -14,6 +14,5 @@ class Api::V1::TrailsController < ApplicationController
 
   def trails_render(trails)
     render json: TrailsSerializer.new(trails)
-    # binding.pry
   end
 end

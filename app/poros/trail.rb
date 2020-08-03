@@ -14,7 +14,7 @@ class Trail
     trails = trails_info(trails_json[:trails], location)
     trails_info = prep_trails_info(location, forecast, trails)
     new(trails_info)
-    # binding.pry
+
   end
 
   def self.forecast_info(forecast)
@@ -31,7 +31,6 @@ class Trail
       trail[:location] = trail[:location]
       trail[:distance_to_trail] = trail_distance(trail, location)
       filter(trail, :trails)
-      # binding.pry
     end
   end
   
