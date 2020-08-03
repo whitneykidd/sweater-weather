@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/forecast', to: 'forecast#index'
       get '/background', to: 'background#index'
+      post '/users', to: 'users#create'
+      post '/sessions', to: 'sessions#create'
     end
   end
 end
