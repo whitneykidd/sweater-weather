@@ -5,7 +5,7 @@ describe HikingProjectService do
     location = Location.find_long_lat('denver, co')
     trails_json = HikingProjectService.new.fetch_trails(location)
 
-      trails_json[:trails].each do |trail|
+    trails_json[:trails].each do |trail|
       expect(trail).to have_key(:name)
       expect(trail).to have_key(:summary)
       expect(trail).to have_key(:difficulty)
@@ -18,7 +18,7 @@ describe HikingProjectService do
     location = Location.find_long_lat('austin, tx')
     trails_json = HikingProjectService.new.fetch_trails(location)
 
-      trails_json[:trails].each do |trail|
+    trails_json[:trails].each do |trail|
       expect(trail).to have_key(:name)
       expect(trail).to have_key(:summary)
       expect(trail).to have_key(:difficulty)

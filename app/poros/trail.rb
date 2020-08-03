@@ -14,7 +14,6 @@ class Trail
     trails = trails_info(trails_json[:trails], location)
     trails_info = prep_trails_info(location, forecast, trails)
     new(trails_info)
-
   end
 
   def self.forecast_info(forecast)
