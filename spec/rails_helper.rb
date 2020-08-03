@@ -69,5 +69,6 @@ VCR.configure do |config|
   config.filter_sensitive_data('<MAPQUEST_API>') { ENV['MAPQUEST_API'] }
   config.filter_sensitive_data('<OPEN_WEATHER_API>') { ENV['OPEN_WEATHER_API'] }
   config.filter_sensitive_data('<UNSPLASH_API>') { ENV['UNSPLASH_API'] }
+  config.filter_sensitive_data('<HIKING_PROJECT_API>') { ENV['HIKING_PROJECT_API'] }
   config.allow_http_connections_when_no_cassette = true
 end
