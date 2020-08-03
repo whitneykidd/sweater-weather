@@ -3,7 +3,6 @@ require 'rails_helper'
 describe Trail do
   describe 'class methods' do
     it 'search(denver, co)' do
-      # VCR.use_cassette('location denver') do
         location = Location.find_long_lat('denver, co')
         forecast = Forecast.search(location)
         trail = Trail.search(location, forecast)

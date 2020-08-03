@@ -3,9 +3,7 @@ class Api::V1::TrailsController < ApplicationController
     location = Location.find_long_lat(trail_params[:location])
     forecast = Forecast.search(location)
     trails = Trail.search(location, forecast)
-    binding.pry
-    render json: TrailsSerializer.new(trails)
-    binding.pry
+    trails_render(trails)
   end
 
     private
@@ -14,4 +12,8 @@ class Api::V1::TrailsController < ApplicationController
     params.permit(:location)
   end
 
+  def trails_render(trails)
+    render json: TrailsSerializer.new(trails)
+    # binding.pry
+  end
 end
