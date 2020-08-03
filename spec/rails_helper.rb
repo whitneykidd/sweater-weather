@@ -71,3 +71,10 @@ VCR.configure do |config|
   config.filter_sensitive_data('<UNSPLASH_API>') { ENV['UNSPLASH_API'] }
   config.allow_http_connections_when_no_cassette = true
 end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
