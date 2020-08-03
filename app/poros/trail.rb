@@ -47,7 +47,7 @@ class Trail
   end
 
   def self.prep_trails_info(location, forecast, trails)
-    { location: (location.city + ", " + location.state),
+    { location: "#{location.city}, #{location.state}",
       forecast: forecast,
       trails:  trails}
   end
