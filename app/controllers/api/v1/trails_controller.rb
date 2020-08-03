@@ -4,6 +4,8 @@ class Api::V1::TrailsController < ApplicationController
     forecast = Forecast.search(location)
     trails = Trail.search(location, forecast)
     binding.pry
+    render json: TrailsSerializer.new(trails)
+    binding.pry
   end
 
     private
