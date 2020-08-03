@@ -4,7 +4,9 @@ def create
   if user.save
     render json: UserSerializer.new(user), status: :created
   else
-    #errors here
+    error = user.errors.full_messages.to_sentence
+    status = error.include?('taken') ? :conflict : :forbidden
+    render json: { error: error }, status: status
   end
 end
 
