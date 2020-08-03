@@ -2,7 +2,7 @@ class Api::V1::TrailsController < ApplicationController
   def index
     location = Location.find_long_lat(trail_params[:location])
     forecast = Forecast.search(location)
-    trails = 
+    trails = Trail.search(location, forecast)
     binding.pry
   end
 
