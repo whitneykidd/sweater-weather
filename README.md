@@ -1,24 +1,44 @@
-# README
+# Sweater Weather
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
+#### Versions
 
-Things you may want to cover:
+* ` Ruby 2.5.3`
 
-* Ruby version
+* `Rails 6.0.3.2`
 
-* System dependencies
+#### APIs Used
+This project uses three API keys, all of which require key registration:
 
-* Configuration
+* [MapQuest's Geocoding API](https://developer.mapquest.com/documentation/geocoding-api/)
 
-* Database creation
+ *As `MAPQUEST_API` in application.yml*
 
-* Database initialization
+* [Unsplash API](https://unsplash.com/documentation)
 
-* How to run the test suite
+ *As `UNSPLASH_API` in application.yml*
 
-* Services (job queues, cache servers, search engines, etc.)
+* [OpenWeather One Call API](https://openweathermap.org/api/one-call-api)
 
-* Deployment instructions
+ *As `OPEN_WEATHER_API` in application.yml*
 
-* ...
+#### Configuration
+
+`$ git clone git@github.com:whitneykidd/sweater-weather.git`
+
+`$ cd sweater-weather`
+
+`$ bundle install`
+
+`$ bundle exec rake db:{drop,create,migrate}`
+
+`$ bundle exec figaro install`
+
+  __*`Add API keys to application.yml`*__
+
+`$ rails server`
+
+
+
+
+
