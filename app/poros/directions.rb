@@ -25,7 +25,7 @@ class Directions
         city: destination.city, state: destination.state, country: destination.country
       },
 
-      travel_time: direction_json[:route][:formattedTime]  
-}
+      travel_time: direction_json[:route][:formattedTime]
+    }
   end
 end

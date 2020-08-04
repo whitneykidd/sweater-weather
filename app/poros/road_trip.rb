@@ -13,7 +13,7 @@ class RoadTrip
     destination = Location.find_long_lat(road_trip_params[:destination])
     directions = Directions.search(road_trip_params[:origin], road_trip_params[:destination])
     forecast = Forecast.search(destination)
-    arrival_time = Time.now.strftime("%I:%M:%S").to_i + directions.travel_time.to_i
+    arrival_time = Time.now.strftime('%I:%M:%S').to_i + directions.travel_time.to_i
     arrival_forecast = forecast.at_time(arrival_time)
     road_trip_info = prep_road_trip_info(directions, arrival_forecast)
     new(road_trip_info)

@@ -14,8 +14,8 @@ describe User do
     it 'create account' do
       user_build = build(:user)
       user_params = { email: user_build.email,
-                    password: user_build.password,
-                    password_confirmation: user_build.password }
+                      password: user_build.password,
+                      password_confirmation: user_build.password }
 
       user = User.create_account(user_params)
       expect(user).to be_a(User)
