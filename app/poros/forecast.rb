@@ -12,8 +12,8 @@ class Forecast
   def self.search(location)
     location = location
     forecast_json = OpenWeatherService.new.fetch_forecast_by_city(location)
-    current = current(forecast_json[:current]) 
-    hourly = hourly(forecast_json[:hourly]) 
+    current = current(forecast_json[:current])
+    hourly = hourly(forecast_json[:hourly])
     daily = daily(forecast_json[:daily])
     forecast_info = prep_forecast_info(location, current, hourly, daily)
     new(forecast_info)
@@ -29,7 +29,7 @@ class Forecast
     current_json[:time] = current_json[:dt]
     current_json[:uv_index] = current_json[:uvi]
     current_json[:visibility] = current_json[:visibility]
-    
+
     filter(current_json, :current)
   end
 
@@ -37,6 +37,7 @@ class Forecast
     hourly_json.map do |hour_json|
       hour_json[:temperature] = hour_json[:temp]
       hour_json[:time] = hour_json[:dt]
+      hour_json[:description] = hour_json[:weather][0][:description]
 
       filter(hour_json, :hourly)
     end
@@ -51,7 +52,6 @@ class Forecast
 
       filter(day_json, :daily)
     end
-    
   end
 
   def self.prep_forecast_info(location, current, hourly, daily)
@@ -60,20 +60,29 @@ class Forecast
         city: location.city, state: location.state, country: location.country
       },
       current: current, hourly: hourly, daily: daily
-      
+
     }
   end
 
   def self.filter(json, type)
     case type
-      when :current then json.slice(
+    when :current then json.slice(
       :time, :temperature, :description, :sunrise, :sunset,
       :feels_like, :humidity, :uv_index, :visibility
-     )
-      when :hourly then json.slice(:description, :temperature, :time)
-      when :daily then json.slice(
-        :description, :max_temp, :min_temp, :rain
+    )
+    when :hourly then json.slice(:description, :temperature, :time)
+    when :daily then json.slice(
+      :description, :max_temp, :min_temp, :rain
     )
     end
+  end
+
+  def at_time(time)
+    forecast = @hourly.min { |hour| (time - hour[:time]).abs }
+    {
+      temperature: forecast[:temperature],
+
+      description: forecast[:description]
+    }
   end
 end

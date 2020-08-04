@@ -8,7 +8,7 @@ class Background
 
   def self.search(location_query)
     background_json = UnsplashService.new.fetch_background(location_query)
-    background_info = { url: background_json[:results][0][:urls][:raw]}
+    background_info = { url: background_json[:results][0][:urls][:raw] }
     new(background_info)
   end
 end

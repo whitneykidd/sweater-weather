@@ -31,8 +31,8 @@ describe 'Client' do
     expect(User.count).to eq(1)
 
     user_params = { email: user1.email,
-      password: user2.password,
-      password_confirmation: user2.password}
+                    password: user2.password,
+                    password_confirmation: user2.password }
 
     post api_v1_users_path(params: user_params)
 
@@ -40,7 +40,7 @@ describe 'Client' do
     expect(User.count).to eq(1)
 
     json = JSON.parse(response.body, symbolize_names: true)
-    expect(json[:error]).to eq("Email has already been taken")
+    expect(json[:error]).to eq('Email has already been taken')
   end
 
   it 'cannot post a new user with a mismatched password confirmation' do
@@ -51,7 +51,8 @@ describe 'Client' do
     user_params = {
       email: user.email,
       password: user.password,
-      password_confirmation: 'password'}
+      password_confirmation: 'password'
+    }
 
     post api_v1_users_path(params: user_params)
 
@@ -71,7 +72,8 @@ describe 'Client' do
     user_params = {
       email: nil,
       password: user.password,
-      password_confirmation: user.password}
+      password_confirmation: user.password
+    }
 
     post api_v1_users_path(params: user_params)
 
@@ -90,7 +92,8 @@ describe 'Client' do
     user_params = {
       email: user.email,
       password: user.password,
-      password_confirmation: nil}
+      password_confirmation: nil
+    }
 
     post api_v1_users_path(params: user_params)
 

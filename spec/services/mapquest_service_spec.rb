@@ -27,7 +27,6 @@ describe MapquestService do
     end
   end
 
-
   it 'can get location for london' do
     VCR.use_cassette('location london') do
       location_json = MapquestService.new.fetch_lat_long('london, uk')
@@ -37,7 +36,7 @@ describe MapquestService do
       expect(location_info[0][:adminArea3]).to eq('ENG')
       expect(location_info[0][:adminArea1]).to eq('GB')
       expect(location_info[0][:latLng][:lat]).to eq(51.50015)
-      expect(location_info[0][:latLng][:lng]).to eq( -0.12624)
+      expect(location_info[0][:latLng][:lng]).to eq(-0.12624)
     end
   end
 end
