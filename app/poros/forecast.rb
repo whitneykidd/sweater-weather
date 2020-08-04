@@ -38,7 +38,7 @@ class Forecast
       hour_json[:temperature] = hour_json[:temp]
       hour_json[:time] = hour_json[:dt]
       hour_json[:description] = hour_json[:weather][0][:description]
-binding.pry
+
       filter(hour_json, :hourly)
     end
   end
@@ -81,11 +81,10 @@ binding.pry
 
   def at_time(time)
    forecast = @hourly.min { |hour| (time - hour[:time]).abs}
-   binding.pry
     {
       temperature: forecast[:temperature],
 
-      # description: forecast[:summary]
+      description: forecast[:description]
     }
   end
 end

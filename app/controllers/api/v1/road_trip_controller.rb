@@ -3,6 +3,7 @@ class Api::V1::RoadTripController < ApplicationController
     user = User.find_by(api_key: road_trip_params[:api_key])
     if user.present?
       road_trip = RoadTrip.plan_trip(road_trip_params)
+      render json: RoadTripSerializer.new(road_trip)
     else
       error = 'Cannot authenticate API key'
       render json: { error: error }, status: unauthorized
