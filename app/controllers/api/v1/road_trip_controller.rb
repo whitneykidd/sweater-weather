@@ -6,7 +6,7 @@ class Api::V1::RoadTripController < ApplicationController
       render json: RoadTripSerializer.new(road_trip)
     else
       error = 'Cannot authenticate API key'
-      render json: { error: error }, status: unauthorized
+      render json: { error: error }, status: :unauthorized
     end
   end
 
