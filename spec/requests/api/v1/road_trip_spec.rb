@@ -6,7 +6,7 @@ describe 'Client' do
 
     trip_params = {
       origin: 'denver, co',
-      destination: 'durango, co'
+      destination: 'durango, co',
       api_key: user.api_key
     }
 

@@ -6,6 +6,13 @@ class MapquestService < BaseService
     fetch_json(path, params)
   end
 
+  def fetch_directions(origin, destination)
+    path = '/directions/v2/route'
+    params = { key: ENV['MAPQUEST_API'], from: origin, to: destination }
+
+    fetch_json(path, params)
+  end
+
   private
 
   def conn
