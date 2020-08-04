@@ -51,7 +51,7 @@ describe 'Client' do
     }
 
     post api_v1_sessions_path(session_params)
-    # expect(response).to have_http_status(401)
+    expect(response).to have_http_status(401)
 
     json = JSON.parse(response.body, symbolize_names: true)
     expect(json[:error]).to eq('Incorrect email/password combination')
